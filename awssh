@@ -1,0 +1,11 @@
+#!/bin/bash
+# Tool to ssh login an aws instance with 'Name' tag
+set -e
+
+SSHHOST=$(aws ec2 describe-instances --filters Name=tag:Name,Values=$1 --query 'Reservations[].Instances[].PublicIpAddress' --output text)
+if [ -z "$SSHHOST" ]
+then
+  echo "Host not found"
+else
+  ssh "$SSHHOST"
+fi
