@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+# instance-list 'vpc-aaaaa,vpc-bbbbb'
+aws ec2 describe-instances --filters Name=vpc-id,Values=$1 --query 'Reservations[].Instances[].[Tags[?Key==`Name`][] | [0].Value, InstanceId, PrivateIpAddress, Placement.AvailabilityZone, InstanceType, LaunchTime, State.Name, PublicDnsName] | sort_by(@, &[0])' --output table
+
