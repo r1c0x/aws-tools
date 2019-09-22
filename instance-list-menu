@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+MENU=()
+
+for ITEM in `instance-list | awk 'FS="|",OFS=" " {gsub(/\s+/, ""); print $4,$2}' | tail -n +4`; do
+        MENU+=($ITEM)
+done
+
+HOST=$(whiptail --title "Jumpbox SSH" --menu "Choose host" 20 78 12 ${MENU[@]} --ok-button "Select" --cancel-button "Quit" 3>&1 1>&2 2>&3)
+echo $HOST
+if [ $? -eq -1 ] || [ -z $HOST ]; then
+    echo -e "\e[93mQuit menu"
+    exit 1;
+fi
+
+ssh $HOST
+

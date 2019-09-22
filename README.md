@@ -13,3 +13,6 @@ instance-list - Tool to print AWS instance Name tags, id, private and public dom
 Example: <br />
 `instance-list 'vpc-aaaaa,vpc-bbbbb'`
 
+instance-list-menu - Fancy menu to ssh into instances, must be using with instance-list
+Example: <br />
+`instance-list-menu`
