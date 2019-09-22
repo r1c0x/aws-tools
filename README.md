@@ -11,5 +11,5 @@ Example: <br />
 
 instance-list - Tool to print AWS instance Name tags, id, private and public domain, AZone, instance type, launch time within a target vpc with a pretty table format
 Example: <br />
-`instance-list 'vpc-aaaaa,vpc-bbbbb``
+`instance-list 'vpc-aaaaa,vpc-bbbbb'`
 
